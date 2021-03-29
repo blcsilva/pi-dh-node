@@ -1,0 +1,58 @@
+<%- include('./partials/header') %>
+
+    <title>Social Store | Formas de pagamento</title>
+</head>
+<body>
+<%- include('./partials/navbar') %>
+
+<h1 class="titulo text-center my-5">Formas de pagamento</h1>
+
+<div class="container-fluid d-flex d-wrap">
+    <div class="col-4 p-4">
+        <img src="./images/boleto.png" style="max-width: 100%; padding: 5px;" alt="boleto">
+        <img src="./images/cartoes.jpg" style="max-width: 100%; padding: 5px;" alt="cartoes de crédito">
+        <img src="./images/pix.jpg" style="max-width: 100%; padding: 5px;" alt="pix">
+    </div>
+    
+        <div class="col-4 my-4">
+          <div class="col p-1">
+            <label for="inputAddress">Digite seu nome:</label>
+            <input type="text" class="form-control" placeholder="Digite seu nome">
+            
+          </div>
+          <div class="col p-1">
+            <label for="inputAddress">Digite seu sobrenome:</label>
+            <input type="text" class="form-control" placeholder="Digite seu sobrenome">
+          </div>
+          <div class="col p-1">
+            <label for="inputAddress">Digite seu endereço:</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Digite seu endereço">
+          </div>
+          <div class="col p-1">
+            <label for="inputAddress">Digite seu CPF:</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Digite seu CPF">
+          </div>
+          <div class="col p-1 my-5">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Concordo com os termos e dados digitados.
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 my-4 p-3">
+              <div class="col">
+            <img src="./images/fortnite.jpg" alt="imagem" style="max-width: 100%; border-radius: 10px;">
+            </div>
+            <div class="col my-3 text-center">
+                <button type="submit" class="btn btn-primary" style="padding-left: 100px; padding-right: 100px;">Finalizar Compra</button>
+              </div>
+            </form>
+      </div>
+        </div>
+      
+</div>
+
+
+<%- include('./partials/footer') %>

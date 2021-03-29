@@ -1,0 +1,27 @@
+<%- include('./partials/header') %>
+
+    <title>Produto | Social Store </title>
+</head>
+<body>
+<%- include('./partials/navbar') %>
+
+<div class="container-fluid">
+<div class="grid-3 d-flex d-wrap">
+    <div class="col-6" style="margin-top: 20vh; margin-left: 5vw;">
+        <img src="./images/counter-strike.jpg" style="max-width: 100%; border-radius: 10px;" alt="imagem card">
+    </div>
+    <div class="col-6" style="margin-top: 20vh;">
+        <form>
+        <div class="form-group" style="padding: 10%; padding-top: 70px;">
+            <label for="exampleFormControlTextarea1">Descrição do produto</label>
+            <textarea class="form-control p-5" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </form>
+    </div>    
+</div>
+<div class="text-center" style="margin-top: 15vh; margin-bottom: 15vh;">
+<button type="button" class="btn btn-primary btn-lg btn-block" style="padding-left: 10%; padding-right: 10%;">Comprar</button>
+</div>
+</div>
+
+<%- include('./partials/footer') %>

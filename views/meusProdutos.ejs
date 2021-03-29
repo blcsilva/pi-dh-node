@@ -1,0 +1,61 @@
+<%- include('./partials/header') %>
+
+    <title>Compra finalizada | Social Store</title>
+</head>
+<body>
+<%- include('./partials/navbar') %>
+
+<div class="container-fluid">
+    <h1 class="titulo text-center mt-5">Meus Produtos</h1>
+
+<div class="produtos mt-4" style="margin-left: 15vw;">
+    <div class="grid-3 d-wrap d-flex">
+    <div class="col-12 form-check p-3">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Anúncio 1
+        </label>
+        <button type="button" class="btn btn-primary btn-lg" style="margin-left: 12vw; padding-left: 5vw; padding-right: 5vw;">Excluir</button>
+        <button type="button" class="btn btn-primary btn-lg" style="padding-left: 5vw; padding-right: 5vw;">Editar</button>
+    </div>
+      </div>
+      <div class="grid-2 d-wrap d-flex">
+      <div class="col-12 form-check p-3">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          Anúncio 2
+        </label>
+        <button type="button" class="btn btn-primary btn-lg" style="margin-left: 12vw; padding-left: 5vw; padding-right: 5vw;">Excluir</button>
+        <button type="button" class="btn btn-primary btn-lg" style="padding-left: 5vw; padding-right: 5vw;">Editar</button>
+      </div>
+      </div>
+      <div class="grid-2 d-wrap d-flex">
+      <div class="col-12 form-check p-3">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+        <label class="form-check-label" for="exampleRadios3">
+          Anúncio 3
+        </label>
+        <button type="button" class="btn btn-primary btn-lg pl-3" style="margin-left: 12vw; padding-left: 5vw; padding-right: 5vw;">Excluir</button>
+        <button type="button" class="btn btn-primary btn-lg" style="padding-left: 5vw; padding-right: 5vw;">Editar</button>
+      </div>
+    </div>
+</div>
+<hr>
+<div class="subtitulo mt-3 text-center">
+    <h3>Histórico de produtos</h3>
+</div>
+</div>
+<div class="produtos mt-5 text-center">
+    <div class="grid-2 d-flex d-wrap">
+    <div class="col-6">
+    <p>Produto 1</p>
+    <p>Produto 2</p>
+    </div>
+    <div class="col-6">
+    <p style="color:green;">Pag. confirmado</p>
+    <p style="color: red;">Pag. confirmado</p>
+</div>
+</div>
+
+</div>
+<%- include('./partials/footer') %>
