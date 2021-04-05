@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const entrar = require('../controller/login');
+const areaLogada = require('../controller/areaLogada');
 
 /* GET about listing. */
-router.get('/', entrar.login);
-router.post('/',entrar.loginAction);
+router.get('/', areaLogada.interno);
 
 module.exports = router;

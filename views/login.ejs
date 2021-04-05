@@ -5,19 +5,19 @@
 <body>
 <%- include('./partials/navbar') %>
 
-<form class="container my-5" style="padding-left: 30%; padding-right: 30%; margin-bottom: 15%;">
+<form class="container my-5" style="padding-left: 30%; padding-right: 30%; margin-bottom: 15%;" method="POST">
     
     <div class="logo text-center">
         <img src="./images/logo.jpeg" style="max-width: 70%;" alt="logo"/>
     </div>
     <div class="mb-5">
       <label for="exampleInputEmail1" class="form-label">Digital seu Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
       <div id="emailHelp" class="form-text">Fique tranquilo, não iremos compartilhar seu email.</div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Digite sua senha</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <input type="password" class="form-control" name="password" id="password">
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
