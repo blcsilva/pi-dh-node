@@ -7,9 +7,10 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+var db = require("./models/");
 var indexRouter = require('./routes/index');
 var sobreRouter = require('./routes/sobre');
-var loginRouter = require('./routes/login');
+var authRoute = require('./routes/auth');
 var cadastroRouter = require('./routes/cadastro');
 var produtoRouter = require('./routes/produto');
 var anunciarRouter = require('./routes/anunciar');
@@ -18,6 +19,13 @@ var compraFinalizadaRouter = require('./routes/compraFinalizada');
 var meusProdutosRouter = require('./routes/meusProdutos');
 var areaLogada = require('./routes/arealogada');
 const listarUsuarios = require('./routes/users');
+
+//load passport strategies
+require("./config/passport/passport.js")(passport, db.Auth);
+const User = require('./models/User');
+const { cookie } = require('express-validator');
+const { Router } = require('express');
+
 
 
 
@@ -30,16 +38,22 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: '123',
+  resave: true,
+  saveUninitialized: true
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use('/', indexRouter);
 app.use('/sobre', sobreRouter);
-app.use('/login', loginRouter);
+app.use('/login', authRoute);
 app.use('/cadastro', cadastroRouter);
 app.use('/produto', produtoRouter);
 app.use('/anunciar', anunciarRouter);
@@ -49,24 +63,21 @@ app.use('/meusProdutos', meusProdutosRouter);
 app.use('/dashboard', areaLogada);
 app.use('/listarusuarios',listarUsuarios);
 
-app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false
-
-}));
-
-
-
-const User = require('./models/User');
 app.use(flash());
 
 
 //Helpers
 
-  passport.use(new LocalStrategy(User.authenticate()));
-  passport.serializeUser(User.serializeUser());
-  passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+  });
+
+  // used to deserialize the user
+  passport.deserializeUser(function(id, done) {
+  connection.query("select * from users where id = "+id,function(err,rows){	
+    done(err, rows[0]);
+  });
+  });
 
 
 

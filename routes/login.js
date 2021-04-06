@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const entrar = require('../controller/login');
+const passport = require('passport')
+const authController = require('../controller/authcontroller');
+require('../auth')(passport);
 
 /* GET about listing. */
-router.get('/', entrar.login);
-router.post('/',entrar.loginAction);
+router.get('/', authController.login);
+router.post('/',authController.login);
 
 module.exports = router;
