@@ -7,7 +7,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-var db = require("./models/");
+var db = require("./models");
 var indexRouter = require('./routes/index');
 var sobreRouter = require('./routes/sobre');
 var authRoute = require('./routes/auth');
@@ -19,9 +19,10 @@ var compraFinalizadaRouter = require('./routes/compraFinalizada');
 var meusProdutosRouter = require('./routes/meusProdutos');
 var areaLogada = require('./routes/arealogada');
 const listarUsuarios = require('./routes/users');
+require('./config/auth')
 
 //load passport strategies
-require("./config/passport/passport.js")(passport, db.Auth);
+require("./config/auth")(passport);
 const User = require('./models/User');
 const { cookie } = require('express-validator');
 const { Router } = require('express');
@@ -68,20 +69,6 @@ app.use(flash());
 
 //Helpers
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-  });
-
-  // used to deserialize the user
-  passport.deserializeUser(function(id, done) {
-  connection.query("select * from users where id = "+id,function(err,rows){	
-    done(err, rows[0]);
-  });
-  });
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -94,6 +81,7 @@ app.use(function(err, req, res, next) {
   res.locals.flashes = flash();
   res.locals.user = req.user;
   res.locals.body = req.body;
+  res.locals.error = req.flash("error");
 
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

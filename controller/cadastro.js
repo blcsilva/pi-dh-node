@@ -13,17 +13,30 @@ const cadastro= (req, res) => {
 
 
       const dados = req.body;
-      var email = dados.email;
-      var senha = dados.senha;
+      var email = req.body.email;
+      var senha = req.body.senha;
+      var hash = bcrypt.hashSync(senha, 10);
+          
 
       const userExists = await Usuario.findOne({ where: { email: req.body.email } });
       if (userExists) {
         return res.status(400).json({ error: 'User already exists.' });
+      } else {
+      
+
+
       }
 
             
-   await Usuario.create({id:null,email,senha})
-   .then(()=>{
+   await Usuario.create({
+   id:null,
+   email,
+   senha:hash
+
+
+
+
+}).then(()=>{
    
     
             res.redirect('/login')
